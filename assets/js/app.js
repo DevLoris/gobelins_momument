@@ -14,3 +14,4 @@ require('../css/app.scss');
 
 require('./front/rate');
 require('./front/editable');
+require('./front/tab');

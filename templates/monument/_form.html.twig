@@ -1,4 +1,22 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.description) }}
+    <div class="tabs">
+        <ul>
+            <li tab="exist">Localisation existante</li>
+            <li tab="new">Nouvelle localisation</li>
+        </ul>
+        <div class="tab active" tab="exist">
+            {% if form.location_list is defined %}
+                {{ form_row(form.location_list) }}
+            {% endif %}
+        </div>
+        <div class="tab" tab="new">
+            {% if form.location_new is defined %}
+            {{ form_row(form.location_new) }}
+            {% endif %}
+        </div>
+    </div>
+    {{ form_row(form.image) }}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

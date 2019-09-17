@@ -24,7 +24,7 @@ class Monument
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="monuments")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Location", inversedBy="monuments", cascade={"persist", "remove"})
      */
     private $location;
 
