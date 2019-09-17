@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monument index{% endblock %}
+
+{% block body %}
+    <h1>Monument index</h1>
+
+
+    <div class="card-list">
+        {% for monument in monuments %}
+            <div class="card">
+                <a href="{{ path('monument_show', {'id': monument.id}) }}">
+                    <div class="card-thumb">
+                        <img src="{{ vich_uploader_asset(monument.image, 'imageFile') }}" alt="{{ monument.name }}" />
+                    </div>
+                    <div class="card-name">
+                        <strong>{{ monument.name }}</strong>
+                    </div>
+                    <div class="card-buttons">
+                        <a class="button" href="{{ path('monument_show', {'id': monument.id}) }}">show</a>
+                        <a class="button" href="{{ path('monument_edit', {'id': monument.id}) }}">edit</a>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <a class="button" href="{{ path('monument_new') }}">Create new</a>
+{% endblock %}

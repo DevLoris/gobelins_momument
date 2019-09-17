@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Monument{% endblock %}
+
+{% block thumb %}
+    <div id="thumb">
+        <img src="{{ vich_uploader_asset(monument.image, 'imageFile') }}" alt="{{ monument.name }}" />
+    </div>
+{% endblock %}
+
+{% block body %}
+    <h1 class="editable-input" type="name" url="{{ path('monument_onfly', {'id': monument.id}) }}">{{ monument.name }}</h1>
+
+    <h2>Infos sur le momument</h2>
+    <p class="editable-input" type="description" url="{{ path('monument_onfly', {'id': monument.id}) }}">
+        {{ monument.description|default('') }}
+    </p>
+
+    <h2>Noter le monument</h2>
+    {% if monument.notes|length == 0 %}
+        Ce monument n'a jamais été noté.
+    {% else %}
+        {% set sumratings = 0 %}
+        {% for rating in monument.notes %}
+            {% set sumratings = sumratings + rating.rating %}
+        {% endfor %}
+        Moyenne : {{  (sumratings / (monument.notes|length))|round }} / 5
+    {% endif %}
+    <br>
+    <br>
+
+    <span class="rate" url="{{ path('monument_rate', {'id': monument.id}) }}" rate="1">⭐️</span>
+    <span class="rate" url="{{ path('monument_rate', {'id': monument.id}) }}" rate="2">⭐️</span>
+    <span class="rate" url="{{ path('monument_rate', {'id': monument.id}) }}" rate="3">⭐️</span>
+    <span class="rate" url="{{ path('monument_rate', {'id': monument.id}) }}" rate="4">⭐️</span>
+    <span class="rate" url="{{ path('monument_rate', {'id': monument.id}) }}" rate="5">⭐️</span>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <a class="button" href="{{ path('monument_edit', {'id': monument.id}) }}">edit</a>
+
+    {{ include('monument/_delete_form.html.twig') }}
+{% endblock %}

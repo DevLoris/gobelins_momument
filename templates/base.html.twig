@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        {{ encore_entry_link_tags('app') }}
+    </head>
+    <body>
+    <div id="menu">
+        <ul>
+            <li>
+                <a href="{{ path('home') }}">Accueil</a>
+            </li>
+            <li>
+                <a href="{{ path('monument_index') }}">Monuments</a>
+            </li>
+            <li>
+                <a href="{{ path('location_index') }}">Villes</a>
+            </li>
+        </ul>
+    </div>
+        {% block thumb %}{% endblock %}
+        <div id="content">
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+        {{ encore_entry_script_tags('app') }}
+    </body>
+</html>

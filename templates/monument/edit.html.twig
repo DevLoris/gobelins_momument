@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Monument{% endblock %}
+
+{% block body %}
+    <h1>Edit Monument</h1>
+
+    {{ include('monument/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('monument_index') }}">back to list</a>
+
+    {{ include('monument/_delete_form.html.twig') }}
+{% endblock %}

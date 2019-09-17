@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Monument{% endblock %}
+
+{% block body %}
+    <h1>Create new Monument</h1>
+
+    {{ include('monument/_form.html.twig') }}
+
+    <a href="{{ path('monument_index') }}">back to list</a>
+{% endblock %}
